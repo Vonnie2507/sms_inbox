@@ -1,0 +1,19 @@
+[project]
+name = "sms_inbox"
+authors = [
+    { name = "Probuild", email = "admin@probuild.com" }
+]
+description = "SMS Inbox - Phone-style SMS conversations for ERPNext"
+requires-python = ">=3.10"
+readme = "README.md"
+dynamic = ["version"]
+dependencies = [
+    "twilio"
+]
+
+[build-system]
+requires = ["flit_core >=3.4,<4"]
+build-backend = "flit_core.buildapi"
+
+[tool.flit.module]
+name = "sms_inbox"

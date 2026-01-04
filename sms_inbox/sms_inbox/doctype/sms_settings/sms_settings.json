@@ -1,0 +1,18 @@
+{
+  "name": "SMS Settings",
+  "doctype": "DocType",
+  "module": "SMS Inbox",
+  "issingle": 1,
+  "fields": [
+    {"fieldname": "enabled", "fieldtype": "Check", "label": "Enable SMS", "default": 0},
+    {"fieldname": "section_twilio", "fieldtype": "Section Break", "label": "Twilio"},
+    {"fieldname": "account_sid", "fieldtype": "Data", "label": "Account SID"},
+    {"fieldname": "auth_token", "fieldtype": "Password", "label": "Auth Token"},
+    {"fieldname": "column_break_twilio", "fieldtype": "Column Break"},
+    {"fieldname": "phone_number", "fieldtype": "Data", "label": "Twilio Phone Number", "description": "e.g. +61412345678"},
+    {"fieldname": "default_country_code", "fieldtype": "Data", "label": "Default Country Code", "default": "+61"}
+  ],
+  "permissions": [
+    {"role": "System Manager", "read": 1, "write": 1}
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "name": "SMS Log",
+  "doctype": "DocType",
+  "module": "SMS Inbox",
+  "autoname": "format:SMS-{#####}",
+  "fields": [
+    {"fieldname": "direction", "fieldtype": "Select", "label": "Direction", "options": "Outbound\nInbound", "reqd": 1, "in_list_view": 1},
+    {"fieldname": "status", "fieldtype": "Select", "label": "Status", "options": "Pending\nSending\nSent\nDelivered\nFailed\nReceived", "default": "Pending", "in_list_view": 1},
+    {"fieldname": "read", "fieldtype": "Check", "label": "Read", "default": 0, "hidden": 1},
+    {"fieldname": "column_break_1", "fieldtype": "Column Break"},
+    {"fieldname": "sent_at", "fieldtype": "Datetime", "label": "Sent At", "in_list_view": 1},
+    {"fieldname": "twilio_sid", "fieldtype": "Data", "label": "Twilio SID", "read_only": 1},
+    {"fieldname": "sent_by", "fieldtype": "Link", "label": "Sent By", "options": "User", "read_only": 1},
+    {"fieldname": "section_contact", "fieldtype": "Section Break", "label": "Contact"},
+    {"fieldname": "phone_number", "fieldtype": "Data", "label": "Phone Number", "reqd": 1, "in_list_view": 1},
+    {"fieldname": "contact_name", "fieldtype": "Data", "label": "Contact Name"},
+    {"fieldname": "column_break_2", "fieldtype": "Column Break"},
+    {"fieldname": "linked_doctype", "fieldtype": "Link", "label": "Linked DocType", "options": "DocType"},
+    {"fieldname": "linked_name", "fieldtype": "Dynamic Link", "label": "Linked Record", "options": "linked_doctype"},
+    {"fieldname": "section_message", "fieldtype": "Section Break", "label": "Message"},
+    {"fieldname": "message", "fieldtype": "Text", "label": "Message", "reqd": 1},
+    {"fieldname": "section_error", "fieldtype": "Section Break", "label": "Error", "collapsible": 1},
+    {"fieldname": "error_message", "fieldtype": "Small Text", "label": "Error Message", "read_only": 1}
+  ],
+  "permissions": [
+    {"role": "System Manager", "read": 1, "write": 1, "create": 1, "delete": 1},
+    {"role": "Sales User", "read": 1, "write": 1, "create": 1}
+  ],
+  "sort_field": "sent_at",
+  "sort_order": "DESC"
+}

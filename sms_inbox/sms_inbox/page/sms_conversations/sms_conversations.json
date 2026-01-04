@@ -1,0 +1,12 @@
+{
+  "name": "sms-conversations",
+  "doctype": "Page",
+  "module": "SMS Inbox",
+  "page_name": "sms-conversations",
+  "title": "SMS Conversations",
+  "standard": "Yes",
+  "roles": [
+    {"role": "System Manager"},
+    {"role": "Sales User"}
+  ]
+}
