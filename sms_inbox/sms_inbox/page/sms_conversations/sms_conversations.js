@@ -292,8 +292,12 @@ class SMSConversations {
                     this.load_conversation(this.current_conversation);
                     frappe.show_alert({ message: 'SMS sent!', indicator: 'green' });
                 } else {
-                    frappe.msgprint({ title: 'Error', message: r.message?.error || 'Failed', indicator: 'red' });
+                    frappe.msgprint({ title: 'SMS Failed', message: r.message?.error || 'Failed to send SMS. Please check your Twilio settings.', indicator: 'red' });
                 }
+            },
+            error: (r) => {
+                $btn.prop('disabled', false).text('Send');
+                frappe.msgprint({ title: 'SMS Failed', message: 'Network error or server issue. Please try again.', indicator: 'red' });
             }
         });
     }
@@ -313,7 +317,10 @@ class SMSConversations {
                     args: { recipient_number: values.phone_number, message: values.message },
                     callback: (r) => {
                         if (r.message?.success) { d.hide(); this.load_conversations(); frappe.show_alert({ message: 'SMS sent!', indicator: 'green' }); }
-                        else { frappe.msgprint({ title: 'Error', message: r.message?.error, indicator: 'red' }); }
+                        else { frappe.msgprint({ title: 'SMS Failed', message: r.message?.error || 'Failed to send SMS. Please check your Twilio settings.', indicator: 'red' }); }
+                    },
+                    error: (r) => {
+                        frappe.msgprint({ title: 'SMS Failed', message: 'Network error or server issue. Please try again.', indicator: 'red' });
                     }
                 });
             }
