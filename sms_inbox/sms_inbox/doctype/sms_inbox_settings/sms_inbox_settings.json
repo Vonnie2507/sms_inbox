@@ -1,5 +1,5 @@
 {
-  "name": "SMS Settings",
+  "name": "SMS Inbox Settings",
   "doctype": "DocType",
   "module": "SMS Inbox",
   "issingle": 1,
@@ -16,3 +16,4 @@
     {"role": "System Manager", "read": 1, "write": 1}
   ]
 }
+

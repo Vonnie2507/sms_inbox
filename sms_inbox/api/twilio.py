@@ -19,7 +19,7 @@ def normalize_phone_number(phone_number, default_country_code="+61"):
 
 def get_default_country_code(fallback="+61"):
     try:
-        settings = frappe.get_single("SMS Settings")
+        settings = frappe.get_single("SMS Inbox Settings")
         return (settings.default_country_code or fallback).strip() or fallback
     except Exception:
         return fallback
@@ -28,7 +28,7 @@ def get_default_country_code(fallback="+61"):
 @frappe.whitelist()
 def get_sms_settings():
     try:
-        settings = frappe.get_single("SMS Settings")
+        settings = frappe.get_single("SMS Inbox Settings")
         if settings and settings.enabled:
             return {"enabled": True, "phone_number": settings.phone_number}
     except Exception:
@@ -39,7 +39,7 @@ def get_sms_settings():
 @frappe.whitelist()
 def send_sms(recipient_number, message, linked_doctype=None, linked_name=None, contact_name=None):
     try:
-        settings = frappe.get_single("SMS Settings")
+        settings = frappe.get_single("SMS Inbox Settings")
         if not settings or not settings.enabled:
             frappe.throw("SMS is not enabled. Configure SMS Settings.")
 
